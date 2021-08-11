@@ -1,11 +1,11 @@
 import { Body, Controller, Get } from '@nestjs/common';
-import { ProductsService } from './catalog.service';
+import { CatalogService } from './catalog.service';
 
 @Controller('/starstore/products')
-export class ProductsController {
-  constructor(private readonly productsService: ProductsService) {}
+export class CatalogController {
+  constructor(private readonly catalogService: CatalogService) {}
   @Get()
   public getProduct(@Body() body): any {
-    return this.productsService.getProducts();
+    return this.catalogService.getProducts();
   }
 }

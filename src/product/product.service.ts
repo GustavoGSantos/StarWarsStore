@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 
 @Injectable()
-export class CatalogService {
+export class ProductService {
   createProduct(
     title: string,
     price: number,

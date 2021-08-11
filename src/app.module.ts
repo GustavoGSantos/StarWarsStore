@@ -2,13 +2,15 @@ import { Module } from '@nestjs/common';
 //Controller
 import { AppController } from './app.controller';
 import { LoginController } from './login/login.controller';
-import { CatalogController } from './product/product.controller';
-import { ProductsController } from './catalog/catalog.controller';
+import { CatalogController } from './catalog/catalog.controller';
+import { ProductController } from './product/product.controller';
+import { BuyController } from './buy/buy.controller';
 //Services
 import { AppService } from './app.service';
 import { LoginService } from './login/login.service';
-import { CatalogService } from './product/product.service';
-import { ProductsService } from './catalog/catalog.service';
+import { CatalogService } from './catalog/catalog.service';
+import { ProductService } from './product/product.service';
+import { BuyService } from './buy/buy.service';
 
 @Module({
   imports: [],
@@ -16,8 +18,15 @@ import { ProductsService } from './catalog/catalog.service';
     AppController,
     LoginController,
     CatalogController,
-    ProductsController,
+    ProductController,
+    BuyController,
   ],
-  providers: [AppService, LoginService, CatalogService, ProductsService],
+  providers: [
+    AppService,
+    LoginService,
+    CatalogService,
+    ProductService,
+    BuyService,
+  ],
 })
 export class AppModule {}

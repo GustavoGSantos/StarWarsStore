@@ -1,12 +1,12 @@
 import { Controller, Post, Body } from '@nestjs/common';
-import { CatalogService } from './product.service';
+import { ProductService } from 'src/product/product.service';
 
 @Controller('/starstore/product')
-export class CatalogController {
-  constructor(private readonly catalogService: CatalogService) {}
+export class ProductController {
+  constructor(private readonly productService: ProductService) {}
   @Post()
-  public creatProduct(@Body() body): any {
-    return this.catalogService.createProduct(
+  public createProduct(@Body() body): any {
+    return this.productService.createProduct(
       body.title,
       body.price,
       body.zipcode,
