@@ -12,6 +12,8 @@ export class BuyService {
     cvv: number,
     exp_date: string,
   ) {
-    return 'Your purchase is complete!';
+    return {
+      message: 'Your purchase is complete!',
+    };
   }
 }
