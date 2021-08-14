@@ -6,6 +6,7 @@ import { CatalogController } from './catalog/catalog.controller';
 import { ProductController } from './product/product.controller';
 import { BuyController } from './buy/buy.controller';
 import { HistoryController } from './history/history.controller';
+import { ClientHistoryService } from './client-history/client-history.service';
 //Services
 import { AppService } from './app.service';
 import { LoginService } from './login/login.service';
@@ -13,6 +14,7 @@ import { CatalogService } from './catalog/catalog.service';
 import { ProductService } from './product/product.service';
 import { BuyService } from './buy/buy.service';
 import { HistoryService } from './history/history.service';
+import { ClientHistoryController } from './client-history/client-history.controller';
 
 @Module({
   imports: [],
@@ -23,6 +25,7 @@ import { HistoryService } from './history/history.service';
     ProductController,
     BuyController,
     HistoryController,
+    ClientHistoryController,
   ],
   providers: [
     AppService,
@@ -31,6 +34,7 @@ import { HistoryService } from './history/history.service';
     ProductService,
     BuyService,
     HistoryService,
+    ClientHistoryService,
   ],
 })
 export class AppModule {}
