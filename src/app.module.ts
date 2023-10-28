@@ -19,7 +19,18 @@ import { HistoryService } from './history/history.service';
 import { ClientHistoryController } from './client-history/client-history.controller';
 
 @Module({
-  imports: [],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'Gustavo',
+      password: 'root',
+      database: 'StarWarsStore',
+      entities: ['./create-user/create-user.entity.ts'],
+      synchronize: true,
+    }),
+  ],
   controllers: [
     AppController,
     LoginController,
@@ -39,23 +50,4 @@ import { ClientHistoryController } from './client-history/client-history.control
     ClientHistoryService,
   ],
 })
-@Module({
-  imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'Gustavo',
-      password: 'root',
-      database: 'StarWarsStore',
-      entities: [],
-      synchronize: true,
-    }),
-  ],
-})
-@Module({
-  imports: [TypeOrmModule.forRoot()],
-})
-export class AppModule {
-  constructor(private dataSource: DataSource) {}
-}
+export class AppModule {}
