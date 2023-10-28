@@ -1,39 +1,25 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { CreateUserDto } from './create-user.dto';
+import { CreateUserEntity } from './create-user.entity';
 
 @Injectable()
 export class CreateUserService {
-  validateEmail(email: string): boolean {
-    if (!email) {
-      return false; // If the email is null or empty the validation will fail
-    }
-    return true;
-  }
+  constructor(
+    @InjectRepository(CreateUserEntity)
+    private readonly userRepository: Repository<CreateUserEntity>,
+  ) {}
 
-  validatePassword(password: string): boolean {
-    if (!password) {
-      return false;
-    }
-    return true;
-  }
+  async createUser(userDto: CreateUserDto): Promise<CreateUserEntity> {
+    const { email, password, name, address } = userDto;
 
-  validateConfirmPassword(password: string, confirmPassword: string): boolean {
-    if (!confirmPassword || confirmPassword !== password) {
-      return false;
-    }
-    return true;
-  }
+    const user = new CreateUserEntity();
+    user.email = email;
+    user.password = password;
+    user.name = name;
+    user.address = address;
 
-  validateName(name: string): boolean {
-    if (!name) {
-      return false;
-    }
-    return true;
-  }
-
-  validateAddress(address: string): boolean {
-    if (!address) {
-      return false;
-    }
-    return true;
+    return await this.userRepository.save(user);
   }
 }
