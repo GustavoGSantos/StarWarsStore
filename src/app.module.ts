@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { DataSource } from 'typeorm';
 //Controller
 import { AppController } from './app.controller';
 import { LoginController } from './login/login.controller';
@@ -19,18 +18,6 @@ import { HistoryService } from './history/history.service';
 import { ClientHistoryController } from './client-history/client-history.controller';
 
 @Module({
-  imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'Gustavo',
-      password: 'root',
-      database: 'StarWarsStore',
-      entities: ['./create-user/create-user.entity.ts'],
-      synchronize: true,
-    }),
-  ],
   controllers: [
     AppController,
     LoginController,

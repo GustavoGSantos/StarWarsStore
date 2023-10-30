@@ -1,5 +1,5 @@
 import { Controller, Post, Body } from '@nestjs/common';
-import { ProductService } from 'src/product/product.service';
+import { ProductService } from './product.service';
 
 @Controller('/starstore/product')
 export class ProductController {
